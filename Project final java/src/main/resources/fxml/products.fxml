@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import java.lang.String?>
+
+<!-- Vue gestion produits -->
+<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.inventory.controller.ProductController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+
+    <top>
+        <Label text="Gestion des Produits">
+            <font>
+                <Font name="System Bold" size="20.0" />
+            </font>
+        </Label>
+    </top>
+
+    <center>
+        <!-- Tableau des produits -->
+        <TableView fx:id="productTable" BorderPane.alignment="CENTER">
+            <columns>
+                <TableColumn fx:id="colId" text="ID" prefWidth="50" />
+                <TableColumn fx:id="colName" text="Nom" prefWidth="150" />
+                <TableColumn fx:id="colCategory" text="Catégorie" prefWidth="120" />
+                <TableColumn fx:id="colPrice" text="Prix (€)" prefWidth="80" />
+                <TableColumn fx:id="colStock" text="Stock" prefWidth="80" />
+            </columns>
+            <BorderPane.margin>
+                <Insets top="10.0" />
+            </BorderPane.margin>
+        </TableView>
+    </center>
+    
+    <right>
+        <!-- Formulaire ajout/modif -->
+        <VBox fx:id="actionPanel" spacing="10" alignment="TOP_CENTER" prefWidth="250">
+             <padding>
+                <Insets left="10.0"/>
+            </padding>
+            <Label text="Nouveau Produit" style="-fx-font-weight: bold;"/>
+            
+            <javafx.scene.control.TextField fx:id="nameField" promptText="Nom du produit"/>
+            <javafx.scene.control.TextArea fx:id="descField" promptText="Description" prefHeight="60"/>
+            
+            <javafx.scene.control.ComboBox fx:id="categoryBox" promptText="Choisir une catégorie" maxWidth="Infinity"/>
+            
+            <javafx.scene.control.TextField fx:id="priceField" promptText="Prix (€)"/>
+            <javafx.scene.control.TextField fx:id="stockField" promptText="Stock initial"/>
+            
+            <Button fx:id="btnAdd" text="Ajouter" maxWidth="Infinity" onAction="#handleAddProduct">
+                <styleClass>
+                    <String fx:value="button-success"/>
+                </styleClass>
+            </Button>
+            
+            <Button fx:id="btnUpdate" text="Mettre à jour" maxWidth="Infinity" onAction="#handleUpdateProduct">
+                <styleClass>
+                    <String fx:value="button-info"/>
+                </styleClass>
+            </Button>
+            
+            <javafx.scene.control.Separator/>
+            
+            <Button fx:id="btnDelete" text="Supprimer Sélection" maxWidth="Infinity" onAction="#handleDeleteProduct">
+                <styleClass>
+                    <String fx:value="button-danger"/>
+                </styleClass>
+            </Button>
+            
+             <Label fx:id="errorLabel" textFill="RED" wrapText="true"/>
+        </VBox>
+    </right>
+</BorderPane>

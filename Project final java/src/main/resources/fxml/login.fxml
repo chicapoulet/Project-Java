@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<!-- Fenetre de connexion -->
+<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.inventory.controller.LoginController">
+    
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+
+    <Label text="Connexion - Gestion de Stock">
+        <font>
+            <Font size="24.0" />
+        </font>
+    </Label>
+
+    <!-- Formulaire de login -->
+    <TextField fx:id="usernameField" promptText="Nom d'utilisateur" maxWidth="250"/>
+    
+    <PasswordField fx:id="passwordField" promptText="Mot de passe" maxWidth="250"/>
+    
+    <Label fx:id="errorLabel" textFill="RED" />
+
+    <Button text="Se connecter" onAction="#handleLogin" maxWidth="200" style="-fx-background-color: #2196F3; -fx-text-fill: white; -fx-cursor: hand;"/>
+</VBox>
